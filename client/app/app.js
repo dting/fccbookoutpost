@@ -1,7 +1,12 @@
 'use strict';
 
 var app = angular.module('fccbookoutpostApp', [
-  'ngCookies', 'ngResource', 'ngSanitize', 'ui.router'
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ui.router',
+  'ngMaterial',
+  'ngMessages'
 ]);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider,
