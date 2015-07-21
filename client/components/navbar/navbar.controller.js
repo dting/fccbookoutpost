@@ -16,7 +16,7 @@ angular.module('fccbookoutpostApp').controller('NavbarCtrl',
 
       var indexMap = Object.create(null);
       indexMap.browse = 0;
-      indexMap.library = 2;
+      indexMap.library = 1;
       indexMap.profile = 2;
 
       $scope.data = {
