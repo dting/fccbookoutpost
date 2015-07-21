@@ -9,20 +9,16 @@
   </md-content>
 
   <md-content class="login" layout="column" layout-align="center center" flex>
-    <div class="social-buttons">
-      <a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
-      <a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
-      <a href="#" class="social-button google"><i class="fa fa-google"></i></a>
+    <div>
+      <div><md-icon md-icon-set="material-icons" class="material-icons md-48">account_circle</md-icon></div>
+
+      <div class="social-buttons">
+        <a href="" ng-click="loginOauth('facebook')" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+        <a href="" ng-click="loginOauth('twitter')" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+        <a href="" ng-click="loginOauth('google')" class="social-button google"><i class="fa fa-google"></i></a>
+      </div>
     </div>
   </md-content>
 </md-content>
 
-<md-content class="footer" layout="row" layout-align="center center">
-  <div hide-sm>
-    <a href="http://www.freecodecamp.com/challenges/basejump-manage-a-book-trading-club" >
-      <img src="assets/images/fcclogo.svg" alt-text="Free Code Camp">
-    </a>
-  </div>
-  <div class="brand">BookOutpost</div>
-  <div class="twitter"><a href="https://twitter.com/D_Ting">@D_Ting</a></div>
-</md-content>
+<div ng-include="'components/footer/footer.html'"></div>
