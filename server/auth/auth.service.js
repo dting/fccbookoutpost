@@ -67,7 +67,7 @@ function setTokenCookie(req, res) {
 
   var token = signToken(req.user._id, req.user.role);
   res.cookie('token', JSON.stringify(token));
-  res.redirect('/');
+  res.redirect('/home');
 }
 
 exports.isAuthenticated = isAuthenticated;
