@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('fccbookoutpostApp').config(function($stateProvider) {
-  $stateProvider.state('settings', {
-    url: '/settings',
-    templateUrl: 'app/account/settings/settings.html',
-    controller: 'SettingsCtrl',
+  $stateProvider.state('profile', {
+    url: '/profile',
+    templateUrl: 'app/account/profile/profile.html',
+    controller: 'ProfileCtrl',
     authenticate: true
   });
 });

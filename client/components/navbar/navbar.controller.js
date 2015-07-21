@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fccbookoutpostApp').controller('NavbarCtrl',
-    function($scope, $location, Auth) {
+    function($scope, $state, Auth) {
       $scope.isCollapsed = true;
       $scope.isLoggedIn = Auth.isLoggedIn;
       $scope.isAdmin = Auth.isAdmin;
@@ -9,10 +9,21 @@ angular.module('fccbookoutpostApp').controller('NavbarCtrl',
 
       $scope.logout = function() {
         Auth.logout();
-        $location.path('/login');
+        $state.go('main');
       };
 
-      $scope.isActive = function(route) {
-        return route === $location.path();
+      $scope.state = $state;
+
+      var indexMap = Object.create(null);
+      indexMap.browse = 0;
+      indexMap.library = 2;
+      indexMap.profile = 2;
+
+      $scope.data = {
+        selectedIndex: 0
       };
+
+      $scope.$watch('state.current', function(newVal) {
+        $scope.data.selectedIndex = indexMap[newVal.name];
+      });
     });

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('fccbookoutpostApp').controller('MainCtrl',
-    function($scope, $http, $window) {
+    function($scope, $http, $window, Auth, $state) {
+      if (Auth.isLoggedIn()) $state.go('browse');
       $scope.awesomeThings = [];
 
       $http.get('/api/things').success(function(awesomeThings) {

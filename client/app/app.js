@@ -18,12 +18,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider,
 
   $mdThemingProvider.definePalette('ocean', {
     50: 'bf616a',
-    100: 'd08770',
-    200: 'ebcb8b',
+    100: 'ebcb8b',
+    200: 'd08770',
     300: 'a3be8c',
     400: '96b5b4',
     500: '8fa1b3',
-    600: 'b48ead',
+    600: 'ebcb8b',
     700: 'ab7967',
     800: '2b303b',
     900: '343d46',
@@ -35,12 +35,18 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider,
     contrastDarkColors: [
       '50', '100',
       '200', '300', '400', 'A100'
-    ],
-    contrastLightColors: undefined
+    ]
   });
   $mdThemingProvider.theme('default')
       .primaryPalette('ocean', {
-        default: '900'
+        default: '900',
+        'hue-1': '100',
+        'hue-2': 'A700',
+        'hue-3': 'A700'
+      })
+      .accentPalette('ocean', {
+        default: '500',
+        'hue-1': '100',
       });
 });
 

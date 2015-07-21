@@ -14,6 +14,10 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  firstName: String,
+  lastName: String,
+  city: String,
+  state: String,
   provider: String,
   facebook: {},
   twitter: {},
@@ -24,6 +28,7 @@ var UserSchema = new Schema({
 /**
  * Virtuals
  */
+
 // Public profile information
 UserSchema.virtual('profile').get(function() {
   return {

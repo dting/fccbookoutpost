@@ -8,6 +8,11 @@ angular.module('fccbookoutpostApp').factory('User', function($resource) {
       method: 'GET', params: {
         id: 'me'
       }
+    },
+    changeProfile: {
+      method: 'PUT', params: {
+        id: '@_id'
+      }
     }
   });
 });

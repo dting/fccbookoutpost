@@ -1,24 +1,23 @@
-<md-toolbar class="md-primary">
-  <div class="md-toolbar-tools">
-    <!-- Title -->
-    <span class="brand">BookOutpost</span>
-
-    <!-- Add spacer, to align navigation to the right -->
-    <div flex></div>
-    <md-fab-speed-dial md-open="menu.isOpen" md-direction="left" class="md-scale">
-      <md-fab-trigger>
-        <md-button aria-label="menu" class="md-icon-button">
-          <md-icon md-icons-set="material icons">menu</md-icon>
-        </md-button>
-      </md-fab-trigger>
-      <md-fab-actions>
-        <md-button aria-label="sign out" class="md-icon-button md-mini">
-          <md-icon md-icons-set="material icons">exit_to_app</md-icon>
-        </md-button>
-        <md-button aria-label="account" class="md-icon-button md-mini">
-          <md-icon md-icons-set="material icons">account_circle</md-icon>
-        </md-button>
-      </md-fab-actions>
-    </md-fab-speed-dial>
+<section ng-controller="NavbarCtrl">
+  <md-toolbar class="md-primary" ng-if="isLoggedIn()">
+    <div class="md-toolbar-tools">
+      <!-- Title -->
+      <span class="brand" layout-margin>BookOutpost</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div flex></div>
+      <md-button aria-label="sign out"
+          class="md-icon-button"
+          ng-click="logout()">
+        <md-icon md-icons-set="material icons">exit_to_app</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <div flex ng-if="isLoggedIn()">
+    <md-tabs class="md-accent" md-selected="data.selectedIndex" md-align-tabs="top" flex>
+      <md-tab id="tab1" ui-sref="browse"><md-tab-label>Browse</md-tab-label></md-tab>
+      <md-tab id="tab2"><md-tab-label>Library</md-tab-label></md-tab>
+      <md-tab id="tab3" ui-sref="profile"><md-tab-label>Profile</md-tab-label></md-tab>
+      <md-tab id="tab4"><md-tab-label>Messages</md-tab-label></md-tab>
+    </md-tabs>
   </div>
-</md-toolbar>
+</section>

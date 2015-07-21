@@ -29,7 +29,7 @@ exports.create = function(req, res) {
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
     var token = jwt.sign({_id: user._id}, config.secrets.session,
-      {expiresInMinutes: 60 * 5});
+        {expiresInMinutes: 60 * 5});
     res.json({token: token});
   });
 };
@@ -59,23 +59,20 @@ exports.destroy = function(req, res) {
 };
 
 /**
- * Change a users password
+ * Change a users profile
  */
-exports.changePassword = function(req, res) {
+exports.changeProfile = function(req, res) {
   var userId = req.user._id;
-  var oldPass = String(req.body.oldPassword);
-  var newPass = String(req.body.newPassword);
-
+  if (req.user.id !== req.params.id) return res.send(403);
   User.findById(userId, function(err, user) {
-    if (user.authenticate(oldPass)) {
-      user.password = newPass;
-      user.save(function(err) {
-        if (err) return validationError(res, err);
-        res.send(200);
-      });
-    } else {
-      res.send(403);
-    }
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.city = req.body.city;
+    user.state = req.body.state;
+    user.save(function(err) {
+      if (err) return res.send(500, err);
+      return res.json(user);
+    });
   });
 };
 
