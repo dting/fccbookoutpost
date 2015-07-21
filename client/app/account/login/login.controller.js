@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fccbookoutpostApp').controller('LoginCtrl',
-    function($scope, Auth, $location, $window) {
+    function($scope, Auth, $location) {
       $scope.user = {};
       $scope.errors = {};
 
