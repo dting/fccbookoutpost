@@ -1,3 +1,102 @@
-<div class="col-md-12">
-This is the library view.
-</div>
+<md-content class="library-content" flex md-margin>
+  <section class="add-book">
+    <form name="addBookForm">
+      <md-input-container flex>
+        <label>Search for book to add to library or wish list.</label>
+        <input ng-model="book.query">
+      </md-input-container>
+      <div layout="row" layout-align="center center">
+        <md-button class="md-primary md-raised"
+            ng-disabled="pending"
+            ng-click="query()">
+          Search
+        </md-button>
+        <md-button class="md-warn md-raised"
+            ng-disabled="pending"
+            ng-click="cancel()"
+            ng-if="queryResults || book.query">
+          Cancel
+        </md-button>
+      </div>
+    </form>
+    <section class="query-results" ng-if="queryResults">
+      <md-subheader class="md-no-sticky" ng-if="!queryResults.length">No Results</md-subheader>
+      <md-list ng-if="queryResults.length">
+        <md-subheader class="md-no-sticky">Results</md-subheader>
+        <md-list-item class="md-2-line" ng-repeat="book in queryResults">
+          <img alt="{{ book.title }}" ng-src="{{ book.thumbnail }}" class="md-avatar"/>
+          <div class="md-list-item-text">
+            <h3>{{book.title}}</h3>
+            <p>{{book.authors[0]}}</p>
+          </div>
+          <md-button class="md-fab md-mini md-primary"
+              ng-disabled="pending"
+              ng-click="addToLibrary(book, $event)"
+              aria-label="Add to library">
+            <md-icon md-icon-set="material-icons">add</md-icon>
+            <md-tooltip>Add To Library</md-tooltip>
+          </md-button>
+          <md-button class="md-fab md-mini md-accent"
+              ng-disabled="pending"
+              ng-click="addToWishList(book, $event)"
+              aria-label="Add to wish list">
+            <md-icon md-icon-set="material-icons">star</md-icon>
+            <md-tooltip>Add To Wish List</md-tooltip>
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </section>
+  </section>
+  <section class="bookshelf" ng-if="library.length">
+    <md-subheader class="md-no-sticky">My books for trade</md-subheader>
+    <md-grid-list
+        md-cols-sm="2"
+        md-cols-md="3"
+        md-cols-lg="4"
+        md-cols-gt-lg="5"
+        md-row-height="2:3"
+        md-gutter="12px" md-gutter-gt-sm="8px" >
+      <md-grid-tile
+          ng-repeat="book in library"
+          md-rowspan="1"
+          md-colspan="1"
+          class="book-cover"
+          ng-style="{'background-image':'url(' + book.info.thumbnail + ')'}">
+        <md-grid-tile-header class="md-primary" layout-align="end center">
+          <md-button class="md-fab md-mini md-warn" ng-click="removeFromLibrary(book)">
+            <i class="fa fa-times"></i>
+          </md-button>
+        </md-grid-tile-header>
+        <md-grid-tile-footer class="md-primary">
+          <h3 class="md-caption">{{book.info.title}}</h3>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
+  </section>
+  <section class="wish-list" ng-if="wishList.length">
+    <md-subheader class="md-no-sticky">Wish List</md-subheader>
+    <md-grid-list
+        md-cols-sm="2"
+        md-cols-md="3"
+        md-cols-lg="4"
+        md-cols-gt-lg="5"
+        md-row-height="2:3"
+        md-gutter="12px" md-gutter-gt-sm="8px" >
+      <md-grid-tile
+          ng-repeat="book in wishList"
+          md-rowspan="1"
+          md-colspan="1"
+          class="book-cover"
+          ng-style="{'background-image':'url(' + book.thumbnail + ')'}">
+        <md-grid-tile-header class="md-primary" layout-align="end center">
+          <md-button class="md-fab md-mini md-warn" ng-click="removeFromWishList(book)">
+            <i class="fa fa-times"></i>
+          </md-button>
+        </md-grid-tile-header>
+        <md-grid-tile-footer class="md-primary">
+          <h3 class="md-caption">{{book.title}}</h3>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
+  </section>
+</md-content>

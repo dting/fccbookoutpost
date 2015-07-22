@@ -18,6 +18,7 @@ var UserSchema = new Schema({
   lastName: String,
   city: String,
   state: String,
+  wishList: Array,
   provider: String,
   facebook: {},
   twitter: {},

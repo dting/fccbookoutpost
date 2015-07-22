@@ -9,6 +9,25 @@ var app = angular.module('fccbookoutpostApp', [
   'ngMessages'
 ]);
 
+var ocean = {
+  base00: '#2b303b',
+  base01: '#343d46',
+  base02: '#4f5b66',
+  base03: '#65737e',
+  base04: '#a7adba',
+  base05: '#c0c5ce',
+  base06: '#dfe1e8',
+  base07: '#eff1f5',
+  base08: '#bf616a',
+  base09: '#d08770',
+  base0A: '#ebcb8b',
+  base0B: '#a3be8c',
+  base0C: '#96b5b4',
+  base0D: '#8fa1b3',
+  base0E: '#b48ead',
+  base0F: '#ab7967'
+};
+
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider,
     $httpProvider, $mdThemingProvider) {
   $urlRouterProvider.otherwise('/');
@@ -16,37 +35,39 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider,
   $locationProvider.html5Mode(true);
   $httpProvider.interceptors.push('authInterceptor');
 
-  $mdThemingProvider.definePalette('ocean', {
-    50: 'bf616a',
-    100: 'ebcb8b',
-    200: 'd08770',
-    300: 'a3be8c',
-    400: '96b5b4',
-    500: '8fa1b3',
-    600: 'ebcb8b',
-    700: 'ab7967',
-    800: '2b303b',
-    900: '343d46',
-    A100: '4f5b66',
-    A200: '65737e',
-    A400: 'a7adba',
-    A700: 'eff1f5',
+  $mdThemingProvider.definePalette('oceanPrimary', {
+    50: ocean.base08,
+    100: ocean.base0A,
+    200: ocean.base09,
+    300: ocean.base0B,
+    400: ocean.base0C,
+    500: ocean.base0D,
+    600: ocean.base0A,
+    700: ocean.base0F,
+    800: ocean.base00,
+    900: ocean.base01,
+    A100: ocean.base02,
+    A200: ocean.base03,
+    A400: ocean.base04,
+    A700: ocean.base07,
     contrastDefaultColor: 'light',
     contrastDarkColors: [
       '50', '100',
       '200', '300', '400', 'A100'
     ]
-  });
+  }).definePalette('oceanAccent',
+      $mdThemingProvider.extendPalette('oceanPrimary', {}));
+
   $mdThemingProvider.theme('default')
-      .primaryPalette('ocean', {
+      .primaryPalette('oceanPrimary', {
         default: '900',
         'hue-1': '100',
         'hue-2': 'A700',
         'hue-3': 'A700'
       })
-      .accentPalette('ocean', {
+      .accentPalette('oceanAccent', {
         default: '500',
-        'hue-1': '100',
+        'hue-1': '100'
       });
 });
 
