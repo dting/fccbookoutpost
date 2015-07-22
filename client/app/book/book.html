@@ -1,0 +1,15 @@
+<md-content class="book-wrapper">
+  <section class="book-info" layout="row">
+    <md-card layout="row" layout-sm="column" flex>
+      <div class="book-cover" layout-margin>
+        <img ng-src="{{book.info.thumbnail}}" class="md-card-image">
+      </div>
+      <md-card-content layout="column" flex>
+        <h1 class="md-title">{{book.info.title}}</h1>
+        <h2 class="md-subhead">{{book.info.authors[0]}}</h2>
+        <div flex></div>
+        <div><md-icon md-font-set="material-icons">face</md-icon> <span>{{book.poster.name}}</span></div>
+      </md-card-content>
+    </md-card>
+  </section>
+</md-content>

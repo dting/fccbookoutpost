@@ -2,16 +2,17 @@
   <md-grid-list
       md-cols-sm="2"
       md-cols-md="3"
-      md-cols-lg="5"
-      md-cols-gt-lg="7"
+      md-cols-lg="6"
+      md-cols-gt-lg="9"
       md-row-height="2:3"
       md-gutter="12px" md-gutter-gt-sm="8px" >
     <md-grid-tile
-        ng-repeat="book in books"
+        ng-repeat="book in books | orderBy: $index:true"
         md-rowspan="1"
         md-colspan="1"
         class="book-cover"
         ng-style="{'background-image':'url(' + book.info.thumbnail + ')'}">
+      <a class="book-link" ui-sref="book({'id': book._id})" flex></a>
       <md-grid-tile-footer class="md-primary">
         <h3 class="md-caption">{{book.info.title}}</h3>
       </md-grid-tile-footer>

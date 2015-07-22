@@ -15,6 +15,10 @@ angular.module('fccbookoutpostApp').factory('Book', function($resource) {
       return bookResourceService.query();
     },
 
+    getBook: function(book) {
+      return bookResourceService.get(book);
+    },
+
     query: function(query) {
       return queryResourceService.query(query);
     },

@@ -39,9 +39,9 @@ exports.index = function(req, res) {
 
 // Get a single book
 exports.show = function(req, res) {
-  Book.findById(req.params.id, function(err, book) {
-    if (err) { return handleError(res, err); }
-    if (!book) { return res.status(404).send('Not Found'); }
+  Book.findById(req.params.id).populate('poster').exec(function(err, book) {
+    if (err) return handleError(res, err);
+    if (!book) return res.status(404).send('Not Found');
     return res.json(book);
   });
 };
