@@ -6,16 +6,13 @@ var auth = require('../auth.service');
 
 var router = express.Router();
 
-router
-  .get('/', passport.authenticate('facebook', {
-    scope: ['email', 'user_about_me'],
-    failureRedirect: '/',
-    session: false
-  }))
-
-  .get('/callback', passport.authenticate('facebook', {
-    failureRedirect: '/',
-    session: false
-  }), auth.setTokenCookie);
+router.get('/', passport.authenticate('facebook', {
+  scope: ['email', 'user_about_me'],
+  failureRedirect: '/',
+  session: false
+})).get('/callback', passport.authenticate('facebook', {
+  failureRedirect: '/',
+  session: false
+}), auth.setTokenCookie);
 
 module.exports = router;

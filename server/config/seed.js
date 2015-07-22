@@ -5,30 +5,10 @@
 
 'use strict';
 
-var Thing = require('../api/thing/thing.model');
+var Book = require('../api/book/book.model');
 var User = require('../api/user/user.model');
 
-Thing.find({}).remove(function() {
-  Thing.create({
-    name: 'Development Tools',
-    info: 'Integration'
-  }, {
-    name: 'Server and Client integration',
-    info: 'Built with a'
-  }, {
-    name: 'Smart Build System',
-    info: 'Build system'
-  }, {
-    name: 'Modular Structure',
-    info: 'Best practice'
-  }, {
-    name: 'Optimized Build',
-    info: 'Build process'
-  }, {
-    name: 'Deployment Ready',
-    info: 'Easily deploy'
-  });
-});
+Book.find({}).remove();
 
 User.find({}).remove(function() {
   User.create({

@@ -1,8 +1,6 @@
 'use strict';
 
-var _ = require('lodash');
 var Book = require('./book.model');
-var User = require('../user/user.model');
 var booksearch = require('google-books-search');
 
 function handleError(res, err) {

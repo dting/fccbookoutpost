@@ -37,7 +37,7 @@ app.controller('LibraryCtrl', function($scope, Book, Auth) {
 
   $scope.removeFromLibrary = function(book) {
     $scope.pending = true;
-    Book.removeFromLibrary(book).$promise.then(function(result) {
+    Book.removeFromLibrary(book).$promise.then(function() {
       _.pull($scope.library, book);
       $scope.pending = false;
     });
